@@ -21,32 +21,43 @@
 <style>
   /* --- Colors --- */
   :is(form:hover, form:focus-within) > label {
-    color: lime;
+    --star-fill: var(--color-button_active);
   }
   form.hasRating {
-    color: green;
+    --star-fill: var(--color-button_active);
   }
 
   /* hide color on all stars after the selected/hovered one */
   label:hover ~ label,
+  form:not(:hover) > input:focus-visible + label ~ label,
   form:not(:hover) > label.selected ~ label {
-    color: black;
+    --star-fill: black;
   }
 
-  input:focus-within + label {
-    border-bottom: 2px dashed;
+  form:not(:hover) > input:focus-visible + label {
+    --star-stroke: var(--color-focus);
+  }
+
+  /* highlight X seperately */
+  label[for="star0"]:hover,
+  form:not(:hover) > input:focus-visible + label[for="star0"],
+  form:not(:hover) > label[for="star0"].selected {
+    color: red;
   }
 
   /* --- Layout --- */
+  form {
+    height: min-content;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
   input {
     margin: 0;
   }
   svg {
     width: 1.5em;
     height: 1.5em;
-  }
-  form {
-    user-select: none;
   }
   
   .visuallyhidden {

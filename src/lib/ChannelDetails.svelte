@@ -11,7 +11,9 @@
     <span>{channel.subscribers} subscribers</span>
   </div>
   <button class="subscribe" onclick="channel.subscribe()">Subscribe</button>
+  {#if !compact}
   <div class="description">{channel.description}</div>
+  {/if}
 </div>
   
 <style>

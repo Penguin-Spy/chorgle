@@ -10,9 +10,9 @@
   </a></li>
 </nav>
 
-<div class="main">
+<main id="main-content">
   <slot></slot>
-</div>
+</main>
 
 <style>
   @import "/src/app.css";
@@ -49,6 +49,10 @@
     background-color: var(--color-navbar_hover);
     color: var(--color-navbar_hover-text);
   }
+  a:focus-visible {
+    box-shadow: inset 0 0 0 2px var(--color-focus);
+  }
+  a:focus { outline: none; }
   nav> li.active> a {
     background-color: var(--color-button_active);
     color: var(--color-button_active-text);
@@ -73,11 +77,11 @@
     color: var(--color-button_active-text);
   }
 
-  .main {
+  main {
     margin: 16px 15% 0;
   }
   @media screen and (max-width: 600px) {
-    .main {
+    main {
       margin: 16px 2% 0;
     }
   }

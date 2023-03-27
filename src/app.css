@@ -18,8 +18,9 @@ html, body, input, textarea, select {
 
   --color-button: var(--color-bg-alt);
   --color-button-text: black;
-  --color-button_active: green;
+  --color-button_active: #00a000;
   --color-button_active-text: white;
+  --color-focus: black;
 
   --color-navbar: #ddd;
   /*--color-navbar-text: black;*/
@@ -40,8 +41,9 @@ html, body, input, textarea, select {
   
     --color-button: var(--color-bg-alt);
     --color-button-text: white;
-    --color-button_active: green;
+    --color-button_active: #00a000;
     --color-button_active-text: white;
+    --color-focus: white;
   
     --color-navbar: #333;
     --color-navbar_hover: #222;
@@ -66,6 +68,32 @@ button {
 button:hover {
   background-color: var(--color-button_active);
   color: var(--color-button_active-text);
+}
+button:focus-visible {
+  outline: 2px solid var(--color-focus) !important;
+}
+button:focus {
+  outline: none;
+}
+
+a[href="#main-content"] {  
+  position: absolute;
+  top: -42px;
+  left: 0;
+  z-index: 999;
+  padding: 8px;
+  margin: 4px;
+  background-color: var(--color-bg-alt);
+  border-radius: 0 8px;
+  border: 2px solid black;
+  transition: top 1s ease-out;
+  outline: none;
+  color: var(--color-text);
+}
+a[href="#main-content"]:focus {
+  top: 0;
+  transition: top .1s ease-in;
+  border-color: blue;
 }
 
 
