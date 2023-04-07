@@ -2,6 +2,7 @@
   export let rating = {};
   export let userRating = -1;
 
+  rating; // hide warning
 </script>
 
 
@@ -51,6 +52,7 @@
     user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+    margin: 0 6px;
   }
   input {
     margin: 0;

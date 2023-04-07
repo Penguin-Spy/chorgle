@@ -1,19 +1,28 @@
 <script lang="ts">
   import type { PageData } from './$types';
+  import Button from '$lib/Button.svelte';
   import ChannelDetails from '$lib/ChannelDetails.svelte';
   import StarRating from '$lib/StarRating.svelte';
 
   export let data: PageData;
 
-  console.log(data)
+  function copyURL() {
+    navigator.clipboard.writeText(location.href).then(function() {
+      console.log(`copied: ${location.href}`);
+    }, function(err) {
+      console.error('failed copy: ', err);
+    });
+  }
 </script>
 
 <svelte:head>
-  <title>{data.video.title} - {data.channel.title} | Chorgle.ml</title>
+  <title>{data.video.title} - {data.channel.title} | Chorgle</title>
 </svelte:head>
 
 
 <div class="video-container">
+  <!-- svelte-ignore a11y-media-has-caption 
+       will add captions & subtitles later -->
   <video id="video_element" src="{data.video.streamUrl}" controls></video>
 </div>
 
@@ -26,9 +35,9 @@
     </div>
     <div class="feedback">
       <StarRating rating={data.video.rating}/>
-      <button id="video_share" onclick="video.share()" title="Copy video URL to clipboard">🔗</button>
+      <Button action={copyURL} tooltip="Copy video URL to clipboard">🔗</Button>
     </div>
-  </div>    
+  </div>
   <ChannelDetails channel={data.channel} compact/>
   <div class="description">{data.video.description}</div>
 </div>
@@ -73,9 +82,6 @@
 }
 .video-details >.stats >.feedback {
   display: flex;
-}
-.video-details >.stats >.feedback >button {
-  margin: 0 4px;
 }
 
 .video-details> .description {

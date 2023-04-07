@@ -51,30 +51,6 @@ html, body, input, textarea, select {
   }
 }
 
-button {
-  display: block;
-  padding: 14px 16px;
-  border-radius: 0 8px;
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  border-color: transparent;
-  background-color: var(--color-button);
-  color: var(--color-button-text);
-  text-align: center;
-  text-decoration: none;
-}
-button:hover {
-  background-color: var(--color-button_active);
-  color: var(--color-button_active-text);
-}
-button:focus-visible {
-  outline: 2px solid var(--color-focus) !important;
-}
-button:focus {
-  outline: none;
-}
 
 a[href="#main-content"] {  
   position: absolute;

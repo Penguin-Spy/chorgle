@@ -1,6 +1,13 @@
 <script lang=ts>
+  import Button from '$lib/Button.svelte';
+  
   export let channel;
   export let compact = false;
+
+  function subscribe() {
+    console.log('subscribe clicked')
+  }
+  
 </script>
 
 
@@ -10,7 +17,7 @@
     <a href="/~/{channel.id}">{channel.title}</a>
     <span>{channel.subscribers} subscribers</span>
   </div>
-  <button class="subscribe" onclick="channel.subscribe()">Subscribe</button>
+  <Button action={subscribe}>Subscribe</Button>
   {#if !compact}
   <div class="description">{channel.description}</div>
   {/if}
@@ -47,10 +54,7 @@
   .detailList[data-compact=true] {
     margin-top: -16px;
   }
-
-  button {
-    margin: 0 4px;
-  }
+  
   .description {
     margin-top: 8px;
     flex-basis: 100%;
